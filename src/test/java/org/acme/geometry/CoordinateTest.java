@@ -10,9 +10,19 @@ public class CoordinateTest {
 	@Test
 	public void testConstructorXY(){
 		// TODO
-		//Coordinate c = new Coordinate(3.0,4.0);
-		//Assert.assertEquals(3.0, c.getX(), EPSILON);
-		//Assert.assertEquals(4.0, c.getY(), EPSILON);
+		Coordinate c = new Coordinate(3.0,4.0);
+		Assert.assertEquals(3.0, c.getX(), EPSILON);
+		Assert.assertEquals(4.0, c.getY(), EPSILON);
+		Assert.assertFalse(c.isEmpty());
+		Assert.assertEquals("[3.0,4.0]", c.toString());
+	}
+	
+	@Test
+	public void testConstructorXYEmpty(){
+		// TODO		
+		Coordinate c = new Coordinate();
+		Assert.assertTrue(c.isEmpty());
+		Assert.assertEquals("[NaN,NaN]", c.toString());
 	}
 
 }
