@@ -61,4 +61,13 @@ public class PointTest {
 		Assert.assertEquals(2.0, p.getCoordinate().getX(), EPSILON);
 		Assert.assertEquals(5.0, p.getCoordinate().getY(), EPSILON);
 	}
+	
+	@Test
+	public void testPointEnvelope() {
+		Coordinate c = new Coordinate(2.0, 5.0);
+		Point p = new Point(c);
+		Envelope env = p.getEnvelope();
+		
+		Assert.assertEquals("2.0,5.0,2.0,5.0", env.toString());
+	}
 }
