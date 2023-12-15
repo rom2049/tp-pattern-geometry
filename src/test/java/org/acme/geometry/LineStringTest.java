@@ -10,6 +10,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class LineStringTest {
+	
+	public static final double EPSILON = 1.0e-15;
 
 	@Test
 	public void testConstructorLineStringEmpty() {
@@ -53,6 +55,28 @@ public class LineStringTest {
 	public void testLineStringIsEmpty() {
 		LineString l = new LineString();
 		Assert.assertTrue(l.isEmpty());
+	}
+	
+	@Test
+	public void testLineStringTranslate() {
+		Coordinate c1 = new Coordinate(2.0, 5.0);
+		Point p1 = new Point(c1);
+		Coordinate c2 = new Coordinate(10.0, 2.0);
+		Point p2 = new Point(c2);
+		Coordinate c3 = new Coordinate(0.0, 3.0);
+		Point p3 = new Point(c3);
+		
+		Point[] pp = {p1, p2, p3};
+		List<Point> listP = new ArrayList<Point>(Arrays.asList(pp));
+		
+		LineString l = new LineString(listP);
+		
+		l.translate(1.0, 2.0);
+		
+		
+		Assert.assertEquals(3.0, l.getPointN(1).getCoordinate().getX(), EPSILON);
+		Assert.assertEquals(4.0, l.getPointN(2).getCoordinate().getY(), EPSILON);
+		Assert.assertEquals(5.0, l.getPointN(3).getCoordinate().getY(), EPSILON);
 	}
 
 }
