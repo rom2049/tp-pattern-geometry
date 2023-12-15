@@ -5,7 +5,8 @@ public class Point implements Geometry {
 	private Coordinate coordinate;
 	
 	public Point() {
-		this.coordinate = new Coordinate();
+//		this.coordinate = new Coordinate();
+		this(Coordinate.EMPTY);
 	}
 	
 	public Point(Coordinate coordinate) {
@@ -21,4 +22,8 @@ public class Point implements Geometry {
 		return "Point";
 	}
 
+	@Override
+	public Boolean isEmpty() {
+		return this.coordinate.isEmpty();
+	}
 }

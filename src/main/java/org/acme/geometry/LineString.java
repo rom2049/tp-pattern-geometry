@@ -8,11 +8,12 @@ public class LineString implements Geometry {
 	private List<Point> points;
 	
 	public LineString() {
-		this.points = new ArrayList<Point>();
+//		this.points = new ArrayList<Point>();
+		this(null);
 	}
 
 	public LineString(List<Point> points) {
-		this.points = points;
+		this.points = points != null ? points : new ArrayList<Point>();
 	}
 	
 	public int getNumPoints() {
@@ -20,11 +21,16 @@ public class LineString implements Geometry {
 	}
 	
 	public Point getPointN(int n) {
-		return this.points.get(n);
+		return this.points.get(n-1);
 	}
 	
 	@Override
 	public String getType() {
 		return "LineString";
+	}
+	
+	@Override
+	public Boolean isEmpty() {
+		return this.points.isEmpty();
 	}
 }
